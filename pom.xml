@@ -56,6 +56,7 @@
 			<artifactId>mysql-connector-j</artifactId>
 			<scope>runtime</scope>
 		</dependency>
+		
 		<dependency>
 			<groupId>org.projectlombok</groupId>
 			<artifactId>lombok</artifactId>
@@ -65,10 +66,16 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
-		</dependency>
-	</dependencies>
+		 </dependency>
+		 <!-- https://mvnrepository.com/artifact/com.spring4all/spring-boot-starter-swagger -->
+          <dependency>
+         <groupId>com.spring4all</groupId>
+         <artifactId>spring-boot-starter-swagger</artifactId>
+         <version>1.5.0.RELEASE</version>
+         </dependency>
+	     </dependencies>
 
-	<build>
+	<build> 
 		<plugins>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>

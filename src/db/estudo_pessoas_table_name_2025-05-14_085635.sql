@@ -1,11 +1,11 @@
 -- Banco de Estudo
 
-CREATE DATABASE estudo_pessoas
+CREATE DATABASE estudo_pessoas;
     DEFAULT CHARACTER SET = 'utf8mb4';
 --
 -- Table structure for table `table_name`
 --
-Use estudo_pessoas
+Use estudo_pessoas;
 
 DROP TABLE IF EXISTS `table_name`;
 
@@ -17,7 +17,32 @@ CREATE TABLE `table_name` (
   `endereco` varchar(150) DEFAULT NULL COMMENT 'Endereço Completo',
   `imagem_perfil` varchar(2083) DEFAULT NULL COMMENT 'URL da Imagem de Perfil',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci COMMENT='Cadastro de Pessoas';
+);
+CREATE TABLE `compras`(
+`id` bigint(20) primary key auto_increment,
+`data_compra` date not null,
+`pessoa_id` BIGINT(20) not null,
+FOREIGN KEY (pessoa_id) REFERENCES `table_name`(id));
+
+CREATE TABLE `itens_compra`(
+`id` bigint(20) primary key auto_increment,
+`compra_id` bigint(20) not null,
+`produto_id` bigint(20) not null,
+`quantidade` int NOT NULL,
+`preco_unitario` decimal(10,2) NOT NULL,
+FOREIGN KEY (compra_id) REFERENCES `compras`(id),
+ FOREIGN KEY (produto_id) REFERENCES `produtos`(id));
+
+CREATE TABLE `produtos`(
+  `id` bigint(20) not null auto_increment primary key,
+  `nome` VARCHAR(200) not null,
+  `preco` DECIMAL(10,2),
+  `quantidadeEstoque` BIGINT(20) not null,
+  `descricao` VARCHAR(200));
+
+
+
+
 
 -- Inserção de dados de exemplo
 INSERT INTO table_name (name, telefone, endereco, imagem_perfil) VALUES
