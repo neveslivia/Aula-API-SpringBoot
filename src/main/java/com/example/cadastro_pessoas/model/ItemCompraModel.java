@@ -15,18 +15,19 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 @Table(name = "itens_compra")
-public class IntensCompraModel {
+public class ItemCompraModel {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @ManyToOne
-    @JoinColumn(name = "compra_id", nullable = false)
-    private ComprasModel compraId;
-    @ManyToOne
-    @JoinColumn(name = "produto_id", nullable = false)
-    private ProdutosModel produtoId;
-    private Integer quantidade;
+    @JoinColumn(name = "compra_id")
+    private CompraModel compra;
+
+    private Long produtoId;
+    private int quantidade;
     private double precoUnitario;
+
+    
 
 
 }
